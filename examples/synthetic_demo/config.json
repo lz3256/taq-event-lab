@@ -1,0 +1,92 @@
+{
+  "data": {
+    "input_glob": "raw/*.csv",
+    "prepared_dir": "prepared",
+    "provenance": "synthetic",
+    "timestamp_column": "timestamp",
+    "date_column": "date",
+    "time_column": "time_m",
+    "symbol_column": "symbol",
+    "price_column": "price",
+    "size_column": "size",
+    "correction_column": "tr_corr",
+    "condition_column": "tr_scond",
+    "require_quality_fields": true,
+    "allowed_corrections": [
+      "0",
+      "00"
+    ],
+    "allowed_sale_conditions": [
+      "",
+      "@"
+    ],
+    "timezone": "America/New_York",
+    "session_start": "09:30:00",
+    "session_end": "16:00:00",
+    "missing_policy": "error"
+  },
+  "split": {
+    "seen_symbols": [
+      "AAPL",
+      "MSFT",
+      "AMZN"
+    ],
+    "heldout_symbols": [
+      "NVDA",
+      "META"
+    ],
+    "train_dates": [
+      "2025-02-03",
+      "2025-02-04",
+      "2025-02-05",
+      "2025-02-06",
+      "2025-02-07",
+      "2025-02-10"
+    ],
+    "val_dates": [
+      "2025-02-11",
+      "2025-02-12"
+    ],
+    "test_dates": [
+      "2025-02-13",
+      "2025-02-14"
+    ]
+  },
+  "tokenizer": {
+    "bins": 8,
+    "field_order": [
+      0,
+      1,
+      2
+    ]
+  },
+  "model": {
+    "context_events": 16,
+    "d_model": 32,
+    "heads": 2,
+    "layers": 1,
+    "dropout": 0.0
+  },
+  "train": {
+    "seed": 42,
+    "device": "cpu",
+    "threads": 2,
+    "batch_size": 8,
+    "max_steps": 18,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "warmup_steps": 2,
+    "gradient_clip": 1.0,
+    "eval_every": 6,
+    "log_every": 2,
+    "stride": 1,
+    "precision": "fp32"
+  },
+  "evaluation": {
+    "batch_size": 32,
+    "stride": 16,
+    "max_windows": 128,
+    "benchmark_repeats": 5
+  },
+  "output_dir": "results"
+}

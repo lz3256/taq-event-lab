@@ -8,7 +8,7 @@ This research lab compares joint event tokens with sequential field tokens for T
 
 ## Work completed
 
-This project implements two trade-event tokenizations and small Transformer baselines, imported and audited TAQ trades, and compared the models under controlled event-exposure and training-time budgets. The study extends the study to repeated seeds, downstream direction tasks and frozen-representation clock probes, documenting where the ranking changes with the comparison budget.
+The implementation covers two trade-event tokenizations, small Transformer baselines, TAQ cleaning audits, and controlled comparisons under event-exposure and training-time budgets. The experiments extend to repeated seeds, downstream direction tasks and frozen-representation clock probes, showing where the ranking changes with the comparison budget.
 
 ## Research highlights
 
@@ -64,4 +64,4 @@ Project owner: [Linfeng Zhao (@lz3256)](https://github.com/lz3256).
 
 Developed with substantial assistance from OpenAI Codex for implementation, analysis, debugging and documentation. Recorded experiments and limitations are described in the linked reports.
 
-The research is inspired by TradeFM and LOBS5. This repository contains a small-scale adaptation and controlled experiments, not an official implementation or reproduction. Real TAQ records are not distributed in this repository.
+The research is inspired by [TradeFM](https://arxiv.org/abs/2602.23784) and [LOBS5](https://arxiv.org/abs/2309.00638). This repository contains a small-scale adaptation and controlled experiments, not an official implementation or reproduction. Real TAQ records are not distributed in this repository.

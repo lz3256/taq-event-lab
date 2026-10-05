@@ -1,0 +1,16 @@
+{
+  "sources": ["taq-dense-seed42.json", "taq-dense-seed43.json", "taq-dense-seed44.json"],
+  "output_dir": "../runs/clock_probes",
+  "dense_study_plan": "dense-stability.json",
+  "budgets": [256, 1024, 4096, "all"],
+  "anchor_seconds": 40,
+  "history_seconds": 300,
+  "max_trade_age_seconds": 5,
+  "past_rv_floor": 1e-16,
+  "l2_grid": [0.0001, 0.001, 0.01, 0.1, 1.0],
+  "probe_max_iter": 500,
+  "probe_gradient_tolerance": 0.00001,
+  "batch_size": 64,
+  "threads": 4,
+  "primary": {"task": "T1", "budget": 1024, "split": "test", "metric": "nll"}
+}

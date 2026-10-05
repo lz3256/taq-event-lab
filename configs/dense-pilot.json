@@ -1,0 +1,11 @@
+{
+  "dense_config": "taq-dense-seed42.json",
+  "reference_config": "taq-inclusive.json",
+  "output_dir": "../runs/dense_pilot",
+  "markov_strengths": [
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ]
+}

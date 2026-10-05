@@ -1,0 +1,21 @@
+{
+  "sources": [
+    {"config": "taq-inclusive.json"},
+    {"config": "taq-stability-seed43.json"},
+    {"config": "taq-stability-seed44.json"}
+  ],
+  "output_dir": "../runs/downstream_study",
+  "horizon_events": 20,
+  "neutral_band_bps": 1.0,
+  "budgets": [512, 2048],
+  "evaluation_examples": 768,
+  "train": {
+    "steps": 150,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_steps": 15,
+    "eval_every": 50,
+    "threads": 4
+  }
+}

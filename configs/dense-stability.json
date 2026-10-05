@@ -1,0 +1,46 @@
+{
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "output_dir": "../runs/dense_stability",
+  "markov_strengths": [
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "jobs": [
+    {
+      "kind": "joint",
+      "variant": "joint",
+      "config": "taq-dense-seed42.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_tpv",
+      "config": "taq-dense-seed42.json"
+    },
+    {
+      "kind": "joint",
+      "variant": "joint",
+      "config": "taq-dense-seed43.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_tpv",
+      "config": "taq-dense-seed43.json"
+    },
+    {
+      "kind": "joint",
+      "variant": "joint",
+      "config": "taq-dense-seed44.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_tpv",
+      "config": "taq-dense-seed44.json"
+    }
+  ]
+}

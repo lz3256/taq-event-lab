@@ -1,0 +1,61 @@
+{
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "output_dir": "../runs/stability_study",
+  "markov_strengths": [
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "jobs": [
+    {
+      "kind": "joint",
+      "variant": "joint",
+      "config": "taq-inclusive.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_tpv",
+      "config": "taq-inclusive.json"
+    },
+    {
+      "kind": "joint",
+      "variant": "joint",
+      "config": "taq-stability-seed43.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_tpv",
+      "config": "taq-stability-seed43.json"
+    },
+    {
+      "kind": "joint",
+      "variant": "joint",
+      "config": "taq-stability-seed44.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_tpv",
+      "config": "taq-stability-seed44.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_ptv",
+      "config": "taq-stability-order-ptv-seed42.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_ptv",
+      "config": "taq-stability-order-ptv-seed43.json"
+    },
+    {
+      "kind": "sequential",
+      "variant": "seq_ptv",
+      "config": "taq-stability-order-ptv-seed44.json"
+    }
+  ]
+}
