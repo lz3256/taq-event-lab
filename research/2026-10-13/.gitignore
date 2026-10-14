@@ -1,0 +1,8 @@
+**/private-inputs/
+**/work/
+**/plan.json
+**/task_metadata.json
+*.npz
+*.pt
+*.parquet
+__pycache__/

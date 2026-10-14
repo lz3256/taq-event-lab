@@ -1,0 +1,15 @@
+{
+  "recorded_at_utc": "2026-10-14T00:03:14.181728+00:00",
+  "scope": "Reporting-only amendment during frozen inference, before any new outcome scoring. Add deterministic input overlap audit and completed raw-label checks. No changes to models, predictions, comparisons, resampling or analysis code.",
+  "before_report_sha256": "c64557bc10926f7e7a63533688190b9247e3dd422cd0dff693a6043fb0ac5ceb",
+  "after_report_sha256": "1d7ba706c52cedaa3d476024187ed3c99fcebcd73f6f5f6d6d49da2effacf626",
+  "additional_independent_auditor_sha256": "5357f0d3f8b98db0528317b18c5e9e91f6bc8588da273187b103b30233543848",
+  "post_outcome_reporting_amendment": {
+    "at_utc": "2026-10-14T00:29:14.629024+00:00",
+    "scope": "Expose unfavorable absolute loss levels and pretrained-versus-random ranking; add descriptive fixed uniform-three-class reference after primary results. No changes to locked comparisons, data, predictions, intervals or p-values.",
+    "report_sha256": "7f193f30426321f9466a36c706d364ea334d66110d8455ae74eaadd24cf2ef34"
+  },
+  "final_report_sha256": "abfd8c3556e38bea3abc378532a41af637cdbf4544cdd274380ab0a45e2d5583",
+  "additional_posthoc_diagnostic_sha256": "483f52b18b6170415db02ce6ce144403a40383ae99c45dbbf2b1738ea4dc2991",
+  "final_layout_fix": "Shorten plot x labels to prevent clipping; no numerical changes."
+}

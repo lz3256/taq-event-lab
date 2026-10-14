@@ -1,0 +1,84 @@
+{
+  "recorded_at_utc": "2026-10-13T23:52:37.886683+00:00",
+  "status": "locked_before_new_data_outcomes",
+  "task": "T2",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "label_budget": 1024,
+  "threads": 4,
+  "batch_size": 64,
+  "dates": [
+    "2025-02-18",
+    "2025-02-19",
+    "2025-02-20",
+    "2025-02-21",
+    "2025-02-24",
+    "2025-02-25",
+    "2025-02-26",
+    "2025-02-27",
+    "2025-02-28",
+    "2025-03-03"
+  ],
+  "seen_symbols": [
+    "AAPL",
+    "AMZN",
+    "MSFT"
+  ],
+  "unseen_symbols": [
+    "NVDA",
+    "JPM",
+    "XOM"
+  ],
+  "new_symbols": [
+    "JPM",
+    "XOM"
+  ],
+  "window_policies": {
+    "event_offset": 128,
+    "clock_offset_seconds": 20,
+    "context_events": 128,
+    "aggregation": "mean of two frozen last-hidden-state vectors"
+  },
+  "methods": [
+    "stats",
+    "event_random",
+    "clock_random",
+    "event_pretrained",
+    "clock_pretrained"
+  ],
+  "fit_policy": "Reuse exact old validation-selected probe parameters and thresholds. No refitting, recalibration, selection or exclusions based on new outcomes.",
+  "primary_stratum": "unseen_symbols",
+  "primary_contrasts": {
+    "clock_policy": "L(clock_pretrained)-L(event_pretrained)",
+    "interaction": "[L(clock_pretrained)-L(event_pretrained)]-[L(clock_random)-L(event_random)]",
+    "incremental_over_statistics": "L(clock_pretrained)-L(stats)"
+  },
+  "secondary_strata": [
+    "seen_symbols",
+    "new_symbols",
+    "by_symbol"
+  ],
+  "loss": "NLL on old train-defined T2 classes; mean loss over seeds, never probability ensemble. Negative contrasts favor first policy/pretraining interaction.",
+  "inference": {
+    "unit": "date; jointly resample all stocks, anchors and seeds for a date",
+    "aggregation": "Equal-weight symbols within a date; equal-weight dates. Seed-averaged per-anchor loss first.",
+    "replicates": 10000,
+    "seed": 20261013,
+    "primary": "paired circular moving-block bootstrap of dates; block length 2; percentile 95% interval; centered two-sided approximate p-values; Holm across three primary contrasts",
+    "sensitivity": "IID date bootstrap and leave-one-date-out; limited to ten dates, conditional on frozen fitted models; no refitting uncertainty"
+  },
+  "quality": "Reuse original cleaner/clock_session; retain numeric stats and inclusive sale conditions. Reconstruct exact timestamp as microsecond time_m plus time_m_nano (last three digits), matching the original ZIP nanosecond timestamp precision. New equal-timestamp source-row order is deterministic by source, sequence, exchange and trade ID; it does not infer exchange-wide causal order. Require every declared date-symbol session.",
+  "information_cutoff": "All input windows end at or before anchor. Labels remain original T2; original shared-task future-VWAP availability screen retained and disclosed.",
+  "source_scope": "Fresh rows for this TAQ study, but historical dates overlap the calendar range used by other projects. This is a prospective protocol on retrospectively obtained data, not a preregistered or globally untouched dataset.",
+  "schema_amendment_before_new_outcomes": {
+    "at_utc": "2026-10-13T23:53:12.183002+00:00",
+    "reason": "Original ZIP header/sample confirms nanosecond TIME_M strings; WRDS SQL separates microseconds and nanosecond remainder. Fix precision before fetching targets."
+  },
+  "null_condition_implementation_fix_before_outcomes": {
+    "at_utc": "2026-10-13T23:55:55.794072+00:00",
+    "reason": "Initial extraction omitted SQL NULL sale-condition values. Original CSV loader maps missing fields to empty strings, which are eligible. Use COALESCE in SQL to exactly reproduce that rule; preserve all symbols/dates and original literal sale-condition eligibility. Initial incomplete files are replaced, no new model outputs have been computed."
+  }
+}

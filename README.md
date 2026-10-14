@@ -2,27 +2,20 @@
 
 # TAQ Event Lab
 
-**How does event tokenization change a small Transformer's behavior on financial trade sequences?**
+**When do next-event pretraining gains transfer to volatility classification across stocks?**
 
 This research lab compares joint event tokens with sequential field tokens for TAQ trade data. It includes frequency baselines, cleaning audits, train-only quantization, unseen-stock evaluation, event generation, downstream direction tasks and frozen-representation clock probes.
 
-## Work completed
+## Latest research: October 13, 2026
 
-The implementation covers two trade-event tokenizations, small Transformer baselines, TAQ cleaning audits, and controlled comparisons under event-exposure and training-time budgets. The experiments extend to repeated seeds, downstream direction tasks and frozen-representation clock probes, showing where the ranking changes with the comparison budget.
+**[Self-Supervised Trade-Event Representations: Pretraining vs. Transfer](research/2026-10-13/README.md)** follows a ~2M-parameter joint-event Transformer pretrained on 7.9M TAQ training events into a frozen-model volatility-classification study.
 
-## Research highlights
+- Next-event NLL improved over Markov by **0.114 / 0.177 nats per event** on the original future-date / unseen-stock splits.
+- In a locked evaluation over **six stocks, ten additional dates and 32,162 anchors**, clock-based history lowered pretrained unseen-stock NLL: **paired change −0.028**, 95% CI **[−0.041, −0.015]**.
+- A handcrafted-statistics logistic benchmark was severely miscalibrated on JPM/XOM: **91–94% confidence versus 23–27% accuracy**, below uniform-random chance.
+- **Cross-stock transfer remained unestablished:** pretrained representations still trailed random encoders and uniform forecasts in the unseen-stock group.
 
-- From-scratch small Transformers with two event encodings.
-- Controlled target-event exposure, three-seed replication and separate equal-time experiments.
-- Per-session evaluation and explicit held-out stock/date splits.
-- Checkpoint selection, resumable runs and synthetic end-to-end examples.
-- A documented tradeoff: better likelihood at fixed event exposure does not imply better compute efficiency.
-
-## What the recorded experiments show
-
-Sequential field tokens lead in the dense-supervision experiments at equal target-event exposure. In the recorded single-seed, equal-CPU-training-time comparison, joint tokens instead lead on both test sets. These are distinct comparisons, and neither result establishes a generally superior encoding.
-
-This is a small-scale adaptation inspired by TradeFM and LOBS5, not an official reproduction. Trade likelihood and direction classification are not trading-profit evidence. The current implementation does not include a full order book, market-making simulator or transaction-cost backtest.
+Window improvement is a useful result without implying a pretraining-transfer benefit. The update publishes method code, aggregate results, design records and explicit statistical limits. Earlier tokenization/exposure/compute comparisons remain separately documented below.
 
 ## Quick start
 
@@ -46,6 +39,8 @@ python -m pytest
 For real data, supply your own authorized TAQ exports and update a configuration. The public repository excludes raw/prepared market records, row-level predictions and trained checkpoints. See [data import instructions](DATA_IMPORT.md) and [detailed project guide](GUIDE.zh.md).
 
 ## Experiment reports
+
+- [October 2026 pretraining-versus-transfer update](research/2026-10-13/README.md)
 
 - [First controlled experiment](FIRST_RESULTS.md)
 - [Dense supervision](DENSE_RESULTS.md)
